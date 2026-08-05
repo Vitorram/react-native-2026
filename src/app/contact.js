@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, View, Text} from 'react-native';
 
-export default function App() {
+export default function ContactScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -24,20 +24,7 @@ export default function App() {
         </View>
       </View>
       {/* Segunda View: entra depois do header no fluxo normal da coluna. */}
-      <View style={styles.bloco}>
-        <View style={styles.fotoBloco}>
-          <Image
-            source={{
-              uri: 'https://i.pinimg.com/736x/96/1d/e8/961de8b038ea0ac1b2346bb84380b98e.jpg',
-            }}
-            style={styles.image}
-            resizeMode="contain"
-          />
-        </View>
-        <Text>
-          俺は負け犬だよ。
-        </Text>
-      </View>
+      
     </View>
   );
 }
@@ -45,20 +32,27 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
+
+  textBloco: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 10
+  },
+
   fotoBloco:{
     width:50,
     height:50,
-
   },
   txtBloco: {
     // "color" muda a cor das letras dentro de um componente Text.
     color: '#000',
+    fontSize: 20
   },
 
   bloco: {
     // backgroundColor pinta o fundo da View para conseguirmos enxergá-la.
     backgroundColor: '#ffffff',
-    width: 500,
+    width: '70%',
     height: 100,
     marginHorizontal: 'auto',
     marginTop: 10,
@@ -87,8 +81,8 @@ const styles = StyleSheet.create({
   },
 
   logo:{
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
   },
 
   title:{
