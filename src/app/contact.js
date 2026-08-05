@@ -1,7 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, View, Text} from 'react-native';
-
+import { Image, Pressable, StyleSheet, View, Text} from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { useRouter } from 'expo-router';
 export default function ContactScreen() {
+
+  const router = useRouter(); 
+
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -19,9 +24,18 @@ export default function ContactScreen() {
         </View>
         <View style={styles.title}>
           <Text style={styles.textTitle}>
-            ビクター
+            接触
           </Text>
         </View>
+        {/* O Pressable inteiro vira o botão e centraliza o ícone com Flexbox. */}
+        <Pressable
+          style={styles.buttonContainer}
+          onPress={() => router.push('/')}
+          accessibilityRole="button"
+          accessibilityLabel="Voltar para a página inicial"
+        >
+          <AntDesign name="home" size={24} color="black" />
+        </Pressable>
       </View>
       {/* Segunda View: entra depois do header no fluxo normal da coluna. */}
       
@@ -32,6 +46,18 @@ export default function ContactScreen() {
 
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    // fundo do icone, para que fique visível sobre o header.
+    backgroundColor: '#fff',
+    marginRight: 20,
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+    // Centraliza o ícone nos eixos horizontal e vertical.
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
 
   textBloco: {
     flex: 1,

@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, View, Text} from 'react-native';
+import { Image, Pressable, StyleSheet, View, Text} from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Octicons from '@expo/vector-icons/Octicons';
+import { Link } from 'expo-router';
+
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -23,8 +25,12 @@ export default function HomeScreen() {
             ビクター
           </Text>
         </View>
-        {/* Fora da View do título, o ícone fica no lado direito do header. */}
-       <AntDesign style={styles.headerIcon} name="user-add" size={24} color="white" />
+        <Link href="/contact" asChild>
+          {/* Pressable permite centralizar o conteúdo do Link com Flexbox. */}
+          <Pressable style={styles.buttonContainer}>
+            <AntDesign name="user-add" size={24} color="black" />
+          </Pressable>
+        </Link>
       </View>
       {/* Segunda View: entra depois do header no fluxo normal da coluna. */}
       <View style={styles.bloco}>
@@ -46,7 +52,7 @@ export default function HomeScreen() {
           </Text>
         </View>
         {/* O texto usa flex: 1 e empurra a lixeira para o lado direito. */}
-        <Octicons style={styles.headerIcon} name="trash" size={26} color="#b42318" />
+        <Octicons style={styles.headerIcon} name="trash" size={20} color="#b42318" />
       </View>
       <View style={styles.bloco}>
         <View style={styles.fotoBloco}>
@@ -66,7 +72,7 @@ export default function HomeScreen() {
             愛染
           </Text>
         </View>
-        <Octicons style={styles.headerIcon} name="trash" size={26} color="#b42318" />
+        <Octicons style={styles.headerIcon} name="trash" size={20} color="#b42318" />
       </View>
       <View style={styles.bloco}>
         <View style={styles.fotoBloco}>
@@ -86,7 +92,7 @@ export default function HomeScreen() {
             一般
           </Text>
         </View>
-        <Octicons style={styles.headerIcon} name="trash" size={26} color="#b42318" />
+        <Octicons style={styles.headerIcon} name="trash" size={20} color="#b42318" />
       </View>
     </View>
   );
@@ -95,11 +101,24 @@ export default function HomeScreen() {
 
 
 const styles = StyleSheet.create({
+buttonContainer: {
+    // fundo do icone, para que fique visível sobre o header.
+    backgroundColor: '#fff',
+    marginRight: 20,
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+    // Centraliza o ícone nos eixos horizontal e vertical.
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+
+  iconContainer: {
+    //icone
+  },
   headerIcon: {
     // Evita que o ícone encoste na borda direita do header.
     marginRight: 20,
-    width: 30,
-    height: 30,
   },
 
   textBloco: {
@@ -135,7 +154,8 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20
+    gap: 20,
+    borderRadius: 10,
   },
 
   container: {
@@ -168,10 +188,6 @@ const styles = StyleSheet.create({
     padding: 10
   },
 
-  headerIcon: {
-    // Evita que o ícone encoste na borda direita do header.
-    marginRight: 20,
-  },
 
   textTitle:{
     color: '#d3d2d2',
